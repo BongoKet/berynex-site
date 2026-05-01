@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Berynex LegalAI — Private AI for Law Firms"
+  description="Berynex LegalAI is an on-premise AI assistant for solicitor firms. Secure document drafting, case research, and client communications with no data leaving your office."
+>
+
+  <!-- HERO -->
+  <section class="animated-gradient grid-overlay relative pt-40 pb-24 px-6 overflow-hidden">
+    <div class="orb absolute top-1/3 right-1/4 w-96 h-96 rounded-full opacity-8 pointer-events-none"
+         style="background: radial-gradient(circle, #7c3aed, transparent 70%)"></div>
+    <div class="orb orb-2 absolute bottom-1/4 left-1/3 w-64 h-64 rounded-full opacity-6 pointer-events-none"
+         style="background: radial-gradient(circle, #a855f7, transparent 70%)"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <span class="inline-block text-xs bg-[#2a1f4a] text-[#a855f7] px-3 py-1 rounded-full font-semibold tracking-widest uppercase mb-6">Coming Soon</span>
+
+      <h1 class="font-['Space_Grotesk',sans-serif] text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
+        Private AI for<br/><span class="gradient-text">Legal Professionals</span>
+      </h1>
+
+      <p class="text-lg text-[#8892a4] max-w-2xl mx-auto mb-10 leading-relaxed">
+        Berynex LegalAI brings the power of large language models into your firm &mdash;
+        running entirely on your own hardware, with full control over your data.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact?subject=legalai"
+           class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#a855f7] text-white font-semibold text-sm hover:opacity-90 transition-opacity">
+          Register Early Interest
+        </a>
+        <a href="#features"
+           class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-[#2a1f4a] text-[#8892a4] font-semibold text-sm hover:border-[#a855f7] hover:text-white transition-all">
+          See Features &darr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="py-24 px-6 border-t border-[#1e2a4a]">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-xs text-[#a855f7] font-semibold tracking-widest uppercase mb-4">The Problem</p>
+          <h2 class="font-['Space_Grotesk',sans-serif] text-3xl font-bold text-white mb-5">
+            Law firms are drowning in<br/>repetitive document work
+          </h2>
+          <p class="text-[#8892a4] leading-relaxed mb-4">
+            Fee earners spend hours drafting standard correspondence, repeating the same
+            client updates, and manually searching through precedent files &mdash; time that
+            should be spent on clients.
+          </p>
+          <p class="text-[#8892a4] leading-relaxed">
+            Existing AI tools require sending sensitive client data to third-party cloud
+            servers, creating real compliance risk under SRA and GDPR obligations.
+            Many firms simply can't use them.
+          </p>
+        </div>
+        <div class="fade-up grid grid-cols-1 gap-4">
+          {[
+            { stat: "40%", label: "of a fee earner's time spent on admin and drafting" },
+            { stat: "£000s", label: "in billable time lost to repetitive correspondence each month" },
+            { stat: "0%", label: "of cloud AI tools meet strict on-premise data requirements" },
+          ].map(item => (
+            <div class="border border-[#1e2a4a] bg-[#0f1629]/60 rounded-xl p-5 flex items-center gap-5">
+              <span class="font-['Space_Grotesk',sans-serif] text-3xl font-bold gradient-text shrink-0">{item.stat}</span>
+              <span class="text-[#8892a4] text-sm leading-snug">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION / FEATURES -->
+  <section id="features" class="py-24 px-6 border-t border-[#1e2a4a]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-xs text-[#a855f7] font-semibold tracking-widest uppercase mb-4">The Solution</p>
+        <h2 class="font-['Space_Grotesk',sans-serif] text-3xl sm:text-4xl font-bold text-white mb-4">
+          Everything you need. Nothing leaving your office.
+        </h2>
+        <p class="text-[#8892a4] max-w-xl mx-auto text-sm leading-relaxed">
+          Berynex LegalAI installs on hardware within your firm. There is no cloud dependency,
+          no subscription data sharing, and no third-party access to client information.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            icon: "🔒",
+            title: "100% On-Premise",
+            desc: "All processing happens on your hardware. Client data never leaves the office. Designed for full SRA and GDPR compliance.",
+            color: "from-[#4f8ef7] to-[#06b6d4]",
+          },
+          {
+            icon: "📄",
+            title: "Document Drafting",
+            desc: "Generate conveyancing letters, client care packs, probate correspondence, and standard contracts in seconds from simple prompts.",
+            color: "from-[#7c3aed] to-[#a855f7]",
+          },
+          {
+            icon: "🔍",
+            title: "Precedent Search",
+            desc: "Query your existing precedent library and case files in plain English. Retrieve relevant clauses, flag risks, and surface useful precedents instantly.",
+            color: "from-[#a855f7] to-[#ec4899]",
+          },
+          {
+            icon: "💬",
+            title: "Client Communications",
+            desc: "Draft professional client update letters and emails. Consistent tone, accurate detail, and hours saved across all fee earners.",
+            color: "from-[#06b6d4] to-[#4f8ef7]",
+          },
+          {
+            icon: "🧠",
+            title: "Legal-Grade LLM",
+            desc: "Powered by open-weight models optimised for legal language. Understands conveyancing, probate, employment, and commercial law contexts.",
+            color: "from-[#ec4899] to-[#a855f7]",
+          },
+          {
+            icon: "⚙️",
+            title: "Firm-Specific Training",
+            desc: "The system learns your firm's house style, standard clauses, and preferred language &mdash; outputs that sound like your firm, not a generic AI.",
+            color: "from-[#4f8ef7] to-[#7c3aed]",
+          },
+        ].map(feature => (
+          <div class="fade-up card-hover border border-[#1e2a4a] bg-[#0f1629]/60 rounded-2xl p-6">
+            <div class={`w-10 h-10 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center text-lg mb-4`}>
+              {feature.icon}
+            </div>
+            <h3 class="font-semibold text-white mb-2">{feature.title}</h3>
+            <p class="text-[#5a6580] text-sm leading-relaxed" set:html={feature.desc}></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="py-24 px-6 border-t border-[#1e2a4a]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-xs text-[#a855f7] font-semibold tracking-widest uppercase mb-4">How It Works</p>
+        <h2 class="font-['Space_Grotesk',sans-serif] text-3xl font-bold text-white">Simple to deploy. Simple to use.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          { step: "01", title: "Install on your hardware", desc: "Berynex LegalAI is installed on a server or workstation within your office. No cloud accounts, no external dependencies." },
+          { step: "02", title: "Connect your document library", desc: "Your existing precedents, templates, and case files are indexed locally. The AI learns your firm's language and style." },
+          { step: "03", title: "Start drafting", desc: "Fee earners access a simple interface to generate documents, search precedents, and draft correspondence &mdash; in seconds." },
+        ].map(item => (
+          <div class="fade-up border border-[#1e2a4a] bg-[#0f1629]/60 rounded-2xl p-6">
+            <p class="font-['Space_Grotesk',sans-serif] text-4xl font-bold text-[#1e2a4a] mb-4">{item.step}</p>
+            <h3 class="font-semibold text-white mb-2">{item.title}</h3>
+            <p class="text-[#5a6580] text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 border-t border-[#1e2a4a]">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="fade-up border border-[#2a1f4a] bg-gradient-to-br from-[#1a0a2e]/60 to-[#0f1629]/60 rounded-3xl p-10 sm:p-14">
+        <h2 class="font-['Space_Grotesk',sans-serif] text-3xl sm:text-4xl font-bold text-white mb-4">
+          Interested in a pilot?
+        </h2>
+        <p class="text-[#8892a4] mb-8 max-w-lg mx-auto leading-relaxed">
+          Berynex LegalAI is currently in development. We are offering a limited early-access
+          pilot programme for solicitor firms in the UK. Get in touch to register your interest.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/contact?subject=legalai"
+             class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#a855f7] text-white font-semibold text-sm hover:opacity-90 transition-opacity">
+            Register Interest
+          </a>
+          <a href="/contact"
+             class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-[#2a1f4a] text-[#8892a4] font-semibold text-sm hover:border-[#a855f7] hover:text-white transition-all">
+            General Enquiry
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
