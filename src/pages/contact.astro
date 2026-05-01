@@ -49,8 +49,6 @@ const subject = Astro.url.searchParams.get('subject') ?? 'other';
         action="https://formspree.io/f/xdabknez"
         method="POST"
       >
-        <!-- Redirect to /thanks after submission -->
-        <input type="hidden" name="_next" value="https://berynex.com/thanks" />
 
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
           <div>
@@ -85,11 +83,39 @@ const subject = Astro.url.searchParams.get('subject') ?? 'other';
                     placeholder="Tell us what you're working on..."></textarea>
         </div>
 
-        <button type="submit"
-                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed] text-white font-semibold text-sm hover:opacity-90 transition-opacity">
+        <button type="submit" id="submit-btn"
+                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed] text-white font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-50">
           Send Message
         </button>
       </form>
+
+      <script>
+        const form = document.querySelector('form') as HTMLFormElement;
+        const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          btn.disabled = true;
+          btn.textContent = 'Sending...';
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' },
+            });
+            if (res.ok) {
+              window.location.href = '/thanks';
+            } else {
+              btn.disabled = false;
+              btn.textContent = 'Send Message';
+              alert('Something went wrong. Please try again or email contact@berynex.com directly.');
+            }
+          } catch {
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+            alert('Something went wrong. Please try again or email contact@berynex.com directly.');
+          }
+        });
+      </script>
 
     </div>
   </div>
