@@ -123,7 +123,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   ];
 
   const geminiRes = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${env.GOOGLE_AI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${env.GOOGLE_AI_API_KEY}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -139,8 +139,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   );
 
   if (!geminiRes.ok) {
+    const errBody = await geminiRes.text().catch(() => '');
     return new Response(
-      JSON.stringify({ error: 'AI service unavailable. Please try again shortly.' }),
+      JSON.stringify({ error: `Gemini ${geminiRes.status}: ${errBody.slice(0, 200)}` }),
       { status: 502, headers: { 'Content-Type': 'application/json', ...CORS_HEADERS } }
     );
   }
