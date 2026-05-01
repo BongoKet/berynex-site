@@ -3,52 +3,47 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Berynex — Technology. Law. Innovation.">
+<Layout>
 
   <!-- HERO -->
-  <section class="animated-gradient grid-overlay relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-20">
-    <div class="orb absolute top-1/4 left-1/4 w-80 h-80 rounded-full opacity-10 pointer-events-none"
-         style="background: radial-gradient(circle, #4f8ef7, transparent 70%)"></div>
-    <div class="orb orb-2 absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full opacity-8 pointer-events-none"
-         style="background: radial-gradient(circle, #7c3aed, transparent 70%)"></div>
-    <div class="orb orb-3 absolute top-1/2 right-1/3 w-48 h-48 rounded-full opacity-6 pointer-events-none"
-         style="background: radial-gradient(circle, #06b6d4, transparent 70%)"></div>
+  <section class="grid-bg relative min-h-screen flex items-center justify-center px-6 pt-16">
+    <div class="max-w-4xl mx-auto text-center">
 
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 border border-[#1e2a4a] bg-[#0f1629]/80 rounded-full px-4 py-1.5 text-xs text-[#8892a4] mb-8 backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-[#4f8ef7] pulse-dot"></span>
-        North Wales &middot; Technology &amp; Legal Innovation
+      <div class="inline-flex items-center gap-2.5 border border-[#1a2d48] bg-[#0a1120] rounded-full px-4 py-1.5 text-xs text-[#8496b0] mb-10">
+        <span class="relative flex w-2 h-2">
+          <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-[#1e6fe8] opacity-60"></span>
+          <span class="relative inline-flex rounded-full w-2 h-2 bg-[#1e6fe8]"></span>
+        </span>
+        North Wales &mdash; Technology &amp; Legal Innovation
       </div>
 
-      <h1 class="font-['Space_Grotesk',sans-serif] text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-6 leading-none">
-        <span class="text-white">BERY</span><span class="gradient-text">NEX</span>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2.8rem,8vw,5.5rem);line-height:1.05;letter-spacing:-1.5px;color:#eef2f8;" class="mb-5">
+        BERYNEX
       </h1>
 
-      <p class="text-xl sm:text-2xl text-[#8892a4] mb-4 font-light tracking-wide">
-        Technology<span class="text-[#4f8ef7]">.</span>
-        Law<span class="text-[#a855f7]">.</span>
-        Innovation<span class="text-[#06b6d4]">.</span>
+      <p style="font-size:clamp(1rem,2.5vw,1.25rem);color:#8496b0;font-weight:300;letter-spacing:0.15em;" class="mb-6 uppercase">
+        Technology &nbsp;&bull;&nbsp; Law &nbsp;&bull;&nbsp; Innovation
       </p>
 
-      <p class="text-base sm:text-lg text-[#5a6580] max-w-2xl mx-auto mb-12 leading-relaxed">
-        Building intelligent tools and digital services from Llangollen, North Wales &mdash;
-        from local tech support to AI-powered solutions for legal professionals.
+      <p class="text-[#8496b0] max-w-xl mx-auto mb-10 leading-relaxed" style="font-size:1.05rem;">
+        Building intelligent tools and digital services from Llangollen, North Wales.
+        From local tech support to AI-powered solutions for the legal sector.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a href="/projects"
-           class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed] text-white font-semibold text-sm hover:opacity-90 transition-opacity glow-blue">
+           class="w-full sm:w-auto px-7 py-3 rounded bg-[#1e6fe8] hover:bg-[#155dc4] text-white text-sm font-semibold transition-colors">
           View Projects
         </a>
         <a href="/legalai"
-           class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-[#1e2a4a] text-[#8892a4] font-semibold text-sm hover:border-[#4f8ef7] hover:text-white transition-all">
-          LegalAI Service &rarr;
+           class="w-full sm:w-auto px-7 py-3 rounded border border-[#1a2d48] hover:border-[#243d60] text-[#8496b0] hover:text-white text-sm font-semibold transition-all">
+          LegalAI Service
         </a>
       </div>
 
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#4a5568]">
+      <div class="mt-20 flex flex-col items-center gap-2 text-[#3a5070]">
         <span class="text-xs tracking-widest uppercase">Scroll</span>
-        <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg class="bounce w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
         </svg>
       </div>
@@ -56,55 +51,121 @@ import '../styles/global.css';
   </section>
 
   <!-- WHAT WE DO -->
-  <section class="py-24 px-6 border-t border-[#1e2a4a]">
+  <section class="py-24 px-6 border-t border-[#1a2d48]">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-xs text-[#4f8ef7] font-semibold tracking-widest uppercase mb-4">What We Do</p>
-        <h2 class="font-['Space_Grotesk',sans-serif] text-3xl sm:text-4xl font-bold text-white">
-          Technology with purpose
-        </h2>
+      <div class="mb-12">
+        <div class="accent-line"></div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:#eef2f8;">What we do</h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="fade-up card-hover border border-[#1e2a4a] bg-[#0f1629]/60 rounded-2xl p-7">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#4f8ef7] to-[#06b6d4] flex items-center justify-center text-xl mb-5">🖥️</div>
-          <h3 class="font-['Space_Grotesk',sans-serif] font-bold text-white mb-2">Local Tech Services</h3>
-          <p class="text-[#8892a4] text-sm leading-relaxed">PC repair, virus removal, and tech support for homes and businesses across Llangollen and North Wales. Honest advice, fair prices.</p>
-          <a href="/projects" class="inline-block mt-4 text-xs text-[#4f8ef7] hover:text-white transition-colors">Explore &rarr;</a>
+      <div class="grid md:grid-cols-3 gap-5">
+
+        <!-- Local tech -->
+        <div class="fade-up card p-7">
+          <div class="w-10 h-10 rounded bg-[#0f1a30] border border-[#1a2d48] flex items-center justify-center mb-5">
+            <svg width="18" height="18" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#eef2f8;" class="mb-2">Local Tech Services</h3>
+          <p class="text-sm text-[#8496b0] leading-relaxed">PC repair, virus removal, and technical support for homes and businesses across Llangollen and North Wales. Honest advice, no jargon.</p>
+          <a href="/projects" class="inline-flex items-center gap-1 mt-5 text-xs font-semibold text-[#1e6fe8] hover:text-white transition-colors">
+            Learn more
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="fade-up card-hover border border-[#1e2a4a] bg-[#0f1629]/60 rounded-2xl p-7">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#a855f7] flex items-center justify-center text-xl mb-5">🤖</div>
-          <h3 class="font-['Space_Grotesk',sans-serif] font-bold text-white mb-2">AI-Powered Products</h3>
-          <p class="text-[#8892a4] text-sm leading-relaxed">Building intelligent consumer and professional tools &mdash; from AI shopping assistants to on-premise legal AI. Practical AI that works in the real world.</p>
-          <a href="/projects" class="inline-block mt-4 text-xs text-[#a855f7] hover:text-white transition-colors">Explore &rarr;</a>
+
+        <!-- AI products -->
+        <div class="fade-up card p-7">
+          <div class="w-10 h-10 rounded bg-[#0f1a30] border border-[#1a2d48] flex items-center justify-center mb-5">
+            <svg width="18" height="18" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M12 2a4 4 0 014 4v1h1a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2h1V6a4 4 0 014-4z"/>
+              <circle cx="9" cy="13" r="1" fill="#1e6fe8"/>
+              <circle cx="15" cy="13" r="1" fill="#1e6fe8"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#eef2f8;" class="mb-2">AI-Powered Products</h3>
+          <p class="text-sm text-[#8496b0] leading-relaxed">Intelligent consumer and professional tools — from AI shopping assistants to on-premise legal AI. Practical technology that works in the real world.</p>
+          <a href="/projects" class="inline-flex items-center gap-1 mt-5 text-xs font-semibold text-[#1e6fe8] hover:text-white transition-colors">
+            Learn more
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
         </div>
-        <div class="fade-up card-hover border border-[#1e2a4a] bg-[#0f1629]/60 rounded-2xl p-7">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#a855f7] to-[#ec4899] flex items-center justify-center text-xl mb-5">⚖️</div>
-          <h3 class="font-['Space_Grotesk',sans-serif] font-bold text-white mb-2">Legal Technology</h3>
-          <p class="text-[#8892a4] text-sm leading-relaxed">Specialist AI tools for law firms &mdash; built with an understanding of legal workflows, compliance requirements, and the realities of legal practice.</p>
-          <a href="/legalai" class="inline-block mt-4 text-xs text-[#ec4899] hover:text-white transition-colors">Learn more &rarr;</a>
+
+        <!-- Legal tech -->
+        <div class="fade-up card p-7">
+          <div class="w-10 h-10 rounded bg-[#0f1a30] border border-[#1a2d48] flex items-center justify-center mb-5">
+            <svg width="18" height="18" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M3 6l9-3 9 3M3 6v12l9 3 9-3V6M12 3v18"/>
+              <path d="M3 10h18M3 14h18"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#eef2f8;" class="mb-2">Legal Technology</h3>
+          <p class="text-sm text-[#8496b0] leading-relaxed">Specialist AI tools for solicitor firms — built with a genuine understanding of legal workflows, SRA obligations, and client confidentiality.</p>
+          <a href="/legalai" class="inline-flex items-center gap-1 mt-5 text-xs font-semibold text-[#1e6fe8] hover:text-white transition-colors">
+            Learn more
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- LEGALAI TEASER -->
-  <section class="py-24 px-6 border-t border-[#1e2a4a] relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full opacity-5 pointer-events-none"
-         style="background: radial-gradient(ellipse, #7c3aed, transparent 70%)"></div>
-    <div class="max-w-5xl mx-auto relative z-10">
-      <div class="fade-up border border-[#2a1f4a] bg-gradient-to-br from-[#0f1629]/80 to-[#1a0a2e]/60 rounded-3xl p-10 sm:p-14 text-center">
-        <span class="inline-block text-xs bg-[#2a1f4a] text-[#a855f7] px-3 py-1 rounded-full font-semibold tracking-widest uppercase mb-6">Coming Soon</span>
-        <h2 class="font-['Space_Grotesk',sans-serif] text-3xl sm:text-4xl font-bold text-white mb-4">
-          Berynex <span class="gradient-text">LegalAI</span>
-        </h2>
-        <p class="text-[#8892a4] max-w-xl mx-auto mb-8 leading-relaxed">
-          Private, on-premise AI for solicitor firms. Secure document drafting, case research,
-          and client communications &mdash; with no data leaving your office.
-        </p>
-        <a href="/legalai"
-           class="inline-block px-8 py-3.5 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#a855f7] text-white font-semibold text-sm hover:opacity-90 transition-opacity">
-          See the full overview &rarr;
-        </a>
+  <!-- LEGALAI FEATURE -->
+  <section class="py-24 px-6 border-t border-[#1a2d48]">
+    <div class="max-w-7xl mx-auto">
+      <div class="fade-up grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-semibold bg-[#0f1a30] border border-[#1a2d48] text-[#1e6fe8] px-3 py-1 rounded uppercase tracking-widest mb-5">In Development</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.7rem,3vw,2.4rem);color:#eef2f8;line-height:1.2;" class="mb-4">
+            Private AI for<br/>solicitor firms
+          </h2>
+          <p class="text-[#8496b0] leading-relaxed mb-6">
+            Berynex LegalAI is an on-premise AI assistant that handles document drafting,
+            case research, and client communications — entirely within your firm's own
+            infrastructure, with no data ever leaving the office.
+          </p>
+          <ul class="space-y-2 mb-8">
+            {[
+              'No cloud exposure — fully on-premise',
+              'Document drafting in seconds',
+              'SRA and GDPR compliant by design',
+              'Learns your firm\'s house style',
+            ].map(item => (
+              <li class="flex items-center gap-3 text-sm text-[#8496b0]">
+                <svg class="shrink-0" width="14" height="14" fill="none" stroke="#1e6fe8" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a href="/legalai"
+             class="inline-flex items-center gap-2 px-6 py-2.5 rounded bg-[#1e6fe8] hover:bg-[#155dc4] text-white text-sm font-semibold transition-colors">
+            Full overview
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Feature grid -->
+        <div class="grid grid-cols-2 gap-3">
+          {[
+            { icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', label: 'On-Premise Security' },
+            { icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', label: 'Document Drafting' },
+            { icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z', label: 'Precedent Search' },
+            { icon: 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z', label: 'Client Comms' },
+          ].map(f => (
+            <div class="card p-5">
+              <svg class="mb-3" width="20" height="20" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={f.icon}/>
+              </svg>
+              <p class="text-sm font-medium text-[#eef2f8]">{f.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

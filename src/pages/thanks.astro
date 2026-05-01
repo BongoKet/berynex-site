@@ -3,35 +3,33 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Message Received — Berynex" description="Thank you for contacting Berynex.">
+<Layout title="Message Received — Berynex">
 
-  <div class="min-h-screen flex items-center justify-center px-6 pt-20">
-    <div class="max-w-lg mx-auto text-center">
+  <div class="min-h-screen flex items-center justify-center px-6 pt-16">
+    <div class="max-w-md mx-auto text-center">
 
-      <!-- Icon -->
-      <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#4f8ef7] to-[#7c3aed] flex items-center justify-center text-4xl mx-auto mb-8 glow-blue">
-        ✓
+      <div class="w-16 h-16 rounded border border-[#1a2d48] bg-[#0a1120] flex items-center justify-center mx-auto mb-8">
+        <svg width="28" height="28" fill="none" stroke="#1e6fe8" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
       </div>
 
-      <h1 class="font-['Space_Grotesk',sans-serif] text-3xl sm:text-4xl font-bold text-white mb-4">
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.8rem;color:#eef2f8;" class="mb-3">
         Message received
       </h1>
-
-      <p class="text-[#8892a4] leading-relaxed mb-3">
-        Thank you for getting in touch. We'll review your message and get back to you shortly.
+      <p class="text-[#8496b0] leading-relaxed mb-2">
+        Thank you for getting in touch. We will review your message and respond shortly.
       </p>
-      <p class="text-[#5a6580] text-sm mb-10">
-        If your enquiry is urgent, you can also reach us directly at
-        <a href="mailto:contact@berynex.com" class="text-[#4f8ef7] hover:text-white transition-colors">contact@berynex.com</a>.
+      <p class="text-sm text-[#3a5070] mb-10">
+        For urgent matters, email
+        <a href="mailto:contact@berynex.com" class="text-[#1e6fe8] hover:text-white transition-colors">contact@berynex.com</a> directly.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/"
-           class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed] text-white font-semibold text-sm hover:opacity-90 transition-opacity">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="/" class="w-full sm:w-auto px-6 py-2.5 rounded bg-[#1e6fe8] hover:bg-[#155dc4] text-white text-sm font-semibold transition-colors">
           Back to Home
         </a>
-        <a href="/projects"
-           class="w-full sm:w-auto px-7 py-3 rounded-full border border-[#1e2a4a] text-[#8892a4] font-semibold text-sm hover:border-[#4f8ef7] hover:text-white transition-all">
+        <a href="/projects" class="w-full sm:w-auto px-6 py-2.5 rounded border border-[#1a2d48] hover:border-[#243d60] text-[#8496b0] hover:text-white text-sm font-semibold transition-all">
           View Projects
         </a>
       </div>

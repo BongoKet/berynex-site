@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({ params: { slug: post.id } }));
+}
+
+const { slug } = Astro.params;
+const post = await getEntry('blog', slug!);
+if (!post) return Astro.redirect('/blog');
+
+const { Content } = await render(post);
+
+const categoryColour: Record<string, string> = {
+  AI:         'text-[#60a5fa] border-[#1a2d48] bg-[#0c1528]',
+  Legal:      'text-[#a78bfa] border-[#1a2d48] bg-[#110c28]',
+  Technology: 'text-[#34d399] border-[#1a2d48] bg-[#0c1e18]',
+  Business:   'text-[#fbbf24] border-[#1a2d48] bg-[#1a150c]',
+  Tips:       'text-[#f87171] border-[#1a2d48] bg-[#1a0c0c]',
+};
+---
+
+<Layout
+  title={`${post.data.title} — Berynex`}
+  description={post.data.description}
+>
+
+  <div class="pt-28 pb-24 px-6">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Back -->
+      <a href="/blog" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#3a5070] hover:text-white transition-colors mb-10">
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        All Insights
+      </a>
+
+      <!-- Header -->
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-5">
+          <span class={`text-xs font-semibold border px-2.5 py-0.5 rounded ${categoryColour[post.data.category] ?? 'text-[#8496b0] border-[#1a2d48] bg-[#0a1120]'}`}>
+            {post.data.category}
+          </span>
+          <time class="text-xs text-[#3a5070]">
+            {post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </time>
+          <span class="text-xs text-[#3a5070]">{post.data.author}</span>
+        </div>
+
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.4rem);color:#eef2f8;line-height:1.15;letter-spacing:-0.3px;" class="mb-4">
+          {post.data.title}
+        </h1>
+        <p class="text-[#8496b0] text-lg leading-relaxed">{post.data.description}</p>
+      </div>
+
+      <div class="border-t border-[#1a2d48] pt-10">
+        <!-- Article body -->
+        <div class="prose-berynex">
+          <Content />
+        </div>
+      </div>
+
+      <div class="border-t border-[#1a2d48] mt-14 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <a href="/blog" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1e6fe8] hover:text-white transition-colors">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Back to Insights
+        </a>
+        <a href="/contact" class="text-sm font-semibold text-[#8496b0] hover:text-white transition-colors">
+          Get in touch &rarr;
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <style is:global>
+    .prose-berynex { color: #8496b0; line-height: 1.8; font-size: 1rem; }
+    .prose-berynex h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #eef2f8;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.2px;
+    }
+    .prose-berynex h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #eef2f8;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-berynex p { margin-bottom: 1.25rem; }
+    .prose-berynex ul { margin-bottom: 1.25rem; padding-left: 0; list-style: none; }
+    .prose-berynex ul li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose-berynex ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #1e6fe8;
+    }
+    .prose-berynex strong { color: #eef2f8; font-weight: 600; }
+    .prose-berynex a { color: #1e6fe8; text-decoration: none; }
+    .prose-berynex a:hover { color: #fff; }
+    .prose-berynex blockquote {
+      border-left: 3px solid #1e6fe8;
+      padding-left: 1rem;
+      color: #8496b0;
+      font-style: italic;
+      margin: 1.5rem 0;
+    }
+    .prose-berynex code {
+      background: #0a1120;
+      border: 1px solid #1a2d48;
+      border-radius: 4px;
+      padding: 0.15em 0.4em;
+      font-size: 0.88em;
+      color: #60a5fa;
+    }
+    .prose-berynex pre {
+      background: #0a1120;
+      border: 1px solid #1a2d48;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.25rem;
+    }
+    .prose-berynex pre code { background: none; border: none; padding: 0; }
+  </style>
+
+</Layout>

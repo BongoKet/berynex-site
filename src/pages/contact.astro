@@ -5,93 +5,104 @@ import '../styles/global.css';
 const subject = Astro.url.searchParams.get('subject') ?? 'other';
 ---
 
-<Layout title="Contact — Berynex" description="Get in touch with Berynex about tech support, LegalAI, Torellio, or any general enquiry.">
+<Layout
+  title="Contact — Berynex"
+  description="Get in touch with Berynex about LegalAI, tech support, Torellio, or any general enquiry."
+>
 
-  <div class="pt-32 pb-24 px-6">
+  <div class="pt-28 pb-24 px-6">
     <div class="max-w-3xl mx-auto">
 
-      <!-- Header -->
-      <div class="mb-12">
-        <p class="text-xs text-[#4f8ef7] font-semibold tracking-widest uppercase mb-4">Get in Touch</p>
-        <h1 class="font-['Space_Grotesk',sans-serif] text-4xl sm:text-5xl font-bold text-white mb-4">
-          Let's talk
+      <div class="mb-10">
+        <div class="accent-line"></div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,2.8rem);color:#eef2f8;" class="mb-3">
+          Get in touch
         </h1>
-        <p class="text-[#8892a4] leading-relaxed max-w-lg">
+        <p class="text-[#8496b0] leading-relaxed">
           Whether you're a solicitor firm exploring AI, a local business needing tech support,
-          or a collaborator with an idea &mdash; we'd like to hear from you.
+          or have a general enquiry &mdash; we'd like to hear from you.
         </p>
       </div>
 
-      <!-- Contact cards -->
-      <div class="grid sm:grid-cols-3 gap-4 mb-10">
+      <div class="grid sm:grid-cols-3 gap-3 mb-8">
         <a href="mailto:contact@berynex.com"
-           class="card-hover border border-[#1e2a4a] bg-[#0f1629]/60 rounded-xl p-5 flex flex-col items-center gap-2 group text-center">
-          <span class="text-2xl">✉️</span>
-          <span class="text-xs text-[#8892a4] group-hover:text-white transition-colors font-medium">Email</span>
-          <span class="text-xs text-[#5a6580]">contact@berynex.com</span>
+           class="card p-5 flex flex-col items-center gap-2 text-center group">
+          <svg width="18" height="18" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span class="text-xs font-semibold text-[#8496b0] group-hover:text-white transition-colors">Email</span>
+          <span class="text-xs text-[#3a5070]">contact@berynex.com</span>
         </a>
         <a href="https://linkedin.com/in/dave7152" target="_blank" rel="noopener"
-           class="card-hover border border-[#1e2a4a] bg-[#0f1629]/60 rounded-xl p-5 flex flex-col items-center gap-2 group text-center">
-          <span class="text-2xl">💼</span>
-          <span class="text-xs text-[#8892a4] group-hover:text-white transition-colors font-medium">LinkedIn</span>
-          <span class="text-xs text-[#5a6580]">linkedin.com/in/dave7152</span>
+           class="card p-5 flex flex-col items-center gap-2 text-center group">
+          <svg width="18" height="18" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          <span class="text-xs font-semibold text-[#8496b0] group-hover:text-white transition-colors">LinkedIn</span>
+          <span class="text-xs text-[#3a5070]">linkedin.com/in/dave7152</span>
         </a>
-        <div class="border border-[#1e2a4a] bg-[#0f1629]/60 rounded-xl p-5 flex flex-col items-center gap-2 text-center">
-          <span class="text-2xl">📍</span>
-          <span class="text-xs text-[#8892a4] font-medium">Location</span>
-          <span class="text-xs text-[#5a6580]">Llangollen, North Wales</span>
+        <div class="card p-5 flex flex-col items-center gap-2 text-center">
+          <svg width="18" height="18" fill="none" stroke="#1e6fe8" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span class="text-xs font-semibold text-[#8496b0]">Location</span>
+          <span class="text-xs text-[#3a5070]">Llangollen, North Wales</span>
         </div>
       </div>
 
-      <!-- Form -->
       <form
-        class="border border-[#1e2a4a] bg-[#0f1629]/60 rounded-2xl p-8 backdrop-blur-sm"
+        class="card p-8"
         action="https://formspree.io/f/xdabknez"
         method="POST"
       >
-
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
           <div>
-            <label class="block text-xs text-[#8892a4] mb-1.5 font-medium">Name</label>
+            <label class="block text-xs font-semibold text-[#8496b0] mb-1.5 uppercase tracking-wide">Name</label>
             <input type="text" name="name" required
-                   class="w-full bg-[#080c18] border border-[#1e2a4a] rounded-xl px-4 py-2.5 text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-[#4f8ef7] transition-colors"
+                   class="w-full rounded border border-[#1a2d48] px-3.5 py-2.5 text-sm text-[#eef2f8] placeholder-[#3a5070] focus:outline-none focus:border-[#1e6fe8] transition-colors"
+                   style="background:#05080f;"
                    placeholder="Your name" />
           </div>
           <div>
-            <label class="block text-xs text-[#8892a4] mb-1.5 font-medium">Email</label>
+            <label class="block text-xs font-semibold text-[#8496b0] mb-1.5 uppercase tracking-wide">Email</label>
             <input type="email" name="email" required
-                   class="w-full bg-[#080c18] border border-[#1e2a4a] rounded-xl px-4 py-2.5 text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-[#4f8ef7] transition-colors"
+                   class="w-full rounded border border-[#1a2d48] px-3.5 py-2.5 text-sm text-[#eef2f8] placeholder-[#3a5070] focus:outline-none focus:border-[#1e6fe8] transition-colors"
+                   style="background:#05080f;"
                    placeholder="you@example.com" />
           </div>
         </div>
 
         <div class="mb-4">
-          <label class="block text-xs text-[#8892a4] mb-1.5 font-medium">Subject</label>
+          <label class="block text-xs font-semibold text-[#8496b0] mb-1.5 uppercase tracking-wide">Subject</label>
           <select name="subject"
-                  class="w-full bg-[#080c18] border border-[#1e2a4a] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#4f8ef7] transition-colors">
-            <option value="legalai" selected={subject === 'legalai'}>LegalAI &mdash; Early Access / Pilot</option>
-            <option value="tech" selected={subject === 'tech'}>Tech Support / PC Repair</option>
+                  class="w-full rounded border border-[#1a2d48] px-3.5 py-2.5 text-sm text-[#eef2f8] focus:outline-none focus:border-[#1e6fe8] transition-colors"
+                  style="background:#05080f;">
+            <option value="legalai"  selected={subject === 'legalai'}>LegalAI &mdash; Early Access / Pilot</option>
+            <option value="tech"     selected={subject === 'tech'}>Tech Support / PC Repair</option>
             <option value="torellio" selected={subject === 'torellio'}>Torellio &mdash; Waitlist / Feedback</option>
-            <option value="other" selected={subject === 'other'}>General Enquiry</option>
+            <option value="other"    selected={subject === 'other'}>General Enquiry</option>
           </select>
         </div>
 
         <div class="mb-6">
-          <label class="block text-xs text-[#8892a4] mb-1.5 font-medium">Message</label>
+          <label class="block text-xs font-semibold text-[#8496b0] mb-1.5 uppercase tracking-wide">Message</label>
           <textarea name="message" required rows="5"
-                    class="w-full bg-[#080c18] border border-[#1e2a4a] rounded-xl px-4 py-2.5 text-sm text-white placeholder-[#4a5568] focus:outline-none focus:border-[#4f8ef7] transition-colors resize-none"
+                    class="w-full rounded border border-[#1a2d48] px-3.5 py-2.5 text-sm text-[#eef2f8] placeholder-[#3a5070] focus:outline-none focus:border-[#1e6fe8] transition-colors resize-none"
+                    style="background:#05080f;"
                     placeholder="Tell us what you're working on..."></textarea>
         </div>
 
         <button type="submit" id="submit-btn"
-                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed] text-white font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-50">
+                class="w-full py-3 rounded bg-[#1e6fe8] hover:bg-[#155dc4] text-white text-sm font-semibold transition-colors disabled:opacity-50">
           Send Message
         </button>
       </form>
 
       <script>
         const form = document.querySelector('form') as HTMLFormElement;
-        const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+        const btn  = document.getElementById('submit-btn') as HTMLButtonElement;
         form?.addEventListener('submit', async (e) => {
           e.preventDefault();
           btn.disabled = true;
@@ -107,12 +118,12 @@ const subject = Astro.url.searchParams.get('subject') ?? 'other';
             } else {
               btn.disabled = false;
               btn.textContent = 'Send Message';
-              alert('Something went wrong. Please try again or email contact@berynex.com directly.');
+              alert('Something went wrong. Please email contact@berynex.com directly.');
             }
           } catch {
             btn.disabled = false;
             btn.textContent = 'Send Message';
-            alert('Something went wrong. Please try again or email contact@berynex.com directly.');
+            alert('Something went wrong. Please email contact@berynex.com directly.');
           }
         });
       </script>

@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: BongoKet/berynex-site
+  branch: main
+  base_url: https://auth.decapcms.org
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Insights / Articles
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title,       name: title,       widget: string }
+      - { label: Description, name: description, widget: string }
+      - { label: Date,        name: date,        widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - label: Category
+        name: category
+        widget: select
+        options: [AI, Legal, Technology, Business, Tips]
+      - { label: Author,      name: author,      widget: string, default: Berynex }
+      - { label: Draft,       name: draft,       widget: boolean, default: false }
+      - { label: Body,        name: body,        widget: markdown }

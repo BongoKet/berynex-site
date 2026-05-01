@@ -2,64 +2,125 @@
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 const {
   title = "Berynex — Technology. Law. Innovation.",
   description = "Berynex is a North Wales technology company delivering AI-powered tools, local tech services, and intelligent solutions for legal professionals.",
+  ogImage = "/og-default.png",
 } = Astro.props;
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPath = Astro.url.pathname;
-const isActive = (path: string) => currentPath === path || (path !== '/' && currentPath.startsWith(path));
+const isActive = (path: string) =>
+  path === '/' ? currentPath === '/' : currentPath.startsWith(path);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-GB" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- JSON-LD Organisation -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Berynex",
+        "alternateName": "Bongo's Electrical Ltd",
+        "url": "https://berynex.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Llangollen",
+          "addressRegion": "North Wales",
+          "addressCountry": "GB"
+        }
+      })}
+    </script>
+
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[#080c18] text-[#e8edf5] font-[Inter,sans-serif] antialiased overflow-x-hidden">
+  <body style="background:#05080f;color:#eef2f8;font-family:Inter,sans-serif;" class="antialiased overflow-x-hidden">
 
     <!-- NAV -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4f8ef7] to-[#7c3aed] flex items-center justify-center text-white font-bold text-sm">B</div>
-          <span class="font-['Space_Grotesk',sans-serif] font-bold text-xl tracking-tight text-white">BERYNEX</span>
+      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+        <a href="/" class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded bg-[#1e6fe8] flex items-center justify-center shrink-0">
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;letter-spacing:-0.5px">B</span>
+          </div>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.3px;color:#fff">BERYNEX</span>
         </a>
 
-        <!-- Desktop links -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="/projects" class={`text-sm transition-colors ${isActive('/projects') ? 'text-white' : 'text-[#8892a4] hover:text-white'}`}>Projects</a>
-          <a href="/legalai" class={`text-sm transition-colors ${isActive('/legalai') ? 'text-white' : 'text-[#8892a4] hover:text-white'}`}>LegalAI</a>
-          <a href="/contact" class="text-sm bg-gradient-to-r from-[#4f8ef7] to-[#7c3aed] text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">Contact</a>
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center gap-1">
+          {[
+            { href: '/projects', label: 'Projects' },
+            { href: '/legalai',  label: 'LegalAI'  },
+            { href: '/blog',     label: 'Insights'  },
+          ].map(({ href, label }) => (
+            <a
+              href={href}
+              class={`px-4 py-2 rounded text-sm font-medium transition-colors ${
+                isActive(href)
+                  ? 'text-white bg-[#0f1a30]'
+                  : 'text-[#8496b0] hover:text-white hover:bg-[#0a1120]'
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href="/contact"
+            class="ml-3 px-5 py-2 rounded bg-[#1e6fe8] hover:bg-[#155dc4] text-white text-sm font-semibold transition-colors"
+          >
+            Contact
+          </a>
         </div>
 
-        <!-- Mobile hamburger -->
-        <button id="menu-btn" class="md:hidden text-[#8892a4] hover:text-white p-2" aria-label="Open menu">
-          <svg id="icon-open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <!-- Mobile toggle -->
+        <button id="menu-btn" class="md:hidden text-[#8496b0] hover:text-white p-2" aria-label="Menu">
+          <svg id="icon-open" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
-          <svg id="icon-close" class="hidden" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg id="icon-close" class="hidden" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
       </div>
 
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden border-t border-[#1e2a4a] bg-[#080c18]/95 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
-          <a href="/projects" class="text-sm text-[#8892a4] hover:text-white transition-colors py-1">Projects</a>
-          <a href="/legalai" class="text-sm text-[#8892a4] hover:text-white transition-colors py-1">LegalAI</a>
-          <a href="/contact" class="text-sm text-[#4f8ef7] hover:text-white transition-colors py-1">Contact</a>
+      <div id="mobile-menu" class="hidden md:hidden border-t border-[#1a2d48]" style="background:#05080f;">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
+          <a href="/projects" class="text-sm text-[#8496b0] hover:text-white px-3 py-2 rounded hover:bg-[#0a1120] transition-colors">Projects</a>
+          <a href="/legalai"  class="text-sm text-[#8496b0] hover:text-white px-3 py-2 rounded hover:bg-[#0a1120] transition-colors">LegalAI</a>
+          <a href="/blog"     class="text-sm text-[#8496b0] hover:text-white px-3 py-2 rounded hover:bg-[#0a1120] transition-colors">Insights</a>
+          <a href="/contact"  class="text-sm text-[#1e6fe8] hover:text-white px-3 py-2 rounded hover:bg-[#0a1120] transition-colors font-semibold">Contact</a>
         </div>
       </div>
     </nav>
@@ -67,64 +128,95 @@ const isActive = (path: string) => currentPath === path || (path !== '/' && curr
     <slot />
 
     <!-- FOOTER -->
-    <footer class="border-t border-[#1e2a4a] py-12 px-6">
+    <footer class="border-t border-[#1a2d48] pt-12 pb-8 px-6" style="background:#05080f;">
       <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-          <a href="/" class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#4f8ef7] to-[#7c3aed] flex items-center justify-center text-white font-bold text-xs">B</div>
-            <span class="font-['Space_Grotesk',sans-serif] font-bold text-lg tracking-tight">BERYNEX</span>
-          </a>
-          <p class="text-xs text-[#4a5568]">&copy; 2026 Berynex. Pontcysyllte, Llangollen, North Wales.</p>
-          <div class="flex items-center gap-6">
-            <a href="/projects" class="text-xs text-[#8892a4] hover:text-white transition-colors">Projects</a>
-            <a href="/legalai" class="text-xs text-[#8892a4] hover:text-white transition-colors">LegalAI</a>
-            <a href="https://linkedin.com/in/dave7152" target="_blank" rel="noopener" class="text-xs text-[#8892a4] hover:text-white transition-colors">LinkedIn</a>
-            <a href="/contact" class="text-xs text-[#8892a4] hover:text-white transition-colors">Contact</a>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <!-- Brand -->
+          <div class="lg:col-span-2">
+            <a href="/" class="flex items-center gap-2 mb-4">
+              <div class="w-7 h-7 rounded bg-[#1e6fe8] flex items-center justify-center">
+                <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:#fff">B</span>
+              </div>
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff">BERYNEX</span>
+            </a>
+            <p class="text-sm text-[#8496b0] leading-relaxed max-w-xs">
+              Technology, AI, and legal innovation from Llangollen, North Wales.
+            </p>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <p class="text-xs font-semibold text-[#3a5070] uppercase tracking-widest mb-3">Services</p>
+            <ul class="space-y-2">
+              <li><a href="/projects" class="text-sm text-[#8496b0] hover:text-white transition-colors">Projects</a></li>
+              <li><a href="/legalai"  class="text-sm text-[#8496b0] hover:text-white transition-colors">LegalAI</a></li>
+              <li><a href="/blog"     class="text-sm text-[#8496b0] hover:text-white transition-colors">Insights</a></li>
+              <li><a href="/contact"  class="text-sm text-[#8496b0] hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="text-xs font-semibold text-[#3a5070] uppercase tracking-widest mb-3">Ventures</p>
+            <ul class="space-y-2">
+              <li><a href="https://bongosclub.uk/" target="_blank" rel="noopener" class="text-sm text-[#8496b0] hover:text-white transition-colors">Bongo's Club</a></li>
+              <li><a href="https://torellio.com"   target="_blank" rel="noopener" class="text-sm text-[#8496b0] hover:text-white transition-colors">Torellio</a></li>
+              <li><a href="/legalai" class="text-sm text-[#8496b0] hover:text-white transition-colors">Berynex LegalAI</a></li>
+            </ul>
           </div>
         </div>
+
+        <div class="border-t border-[#1a2d48] pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p class="text-xs text-[#3a5070]">
+            &copy; 2026 Berynex. Berynex is a trading name of
+            <strong class="text-[#4a6080] font-medium">Bongo's Electrical Ltd</strong>
+            &mdash; Company No. <strong class="text-[#4a6080] font-medium">13257440</strong>.
+            Registered in England and Wales.
+          </p>
+          <a href="https://linkedin.com/in/dave7152" target="_blank" rel="noopener"
+             class="text-xs text-[#3a5070] hover:text-white transition-colors shrink-0">LinkedIn</a>
+        </div>
+
       </div>
     </footer>
 
     <script>
+      // Sticky nav
       const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-          navbar?.classList.add('bg-[#080c18]/90', 'backdrop-blur-md', 'border-b', 'border-[#1e2a4a]');
+      const updateNav = () => {
+        if (window.scrollY > 10) {
+          navbar?.setAttribute('style', 'background:rgba(5,8,15,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1a2d48;');
         } else {
-          navbar?.classList.remove('bg-[#080c18]/90', 'backdrop-blur-md', 'border-b', 'border-[#1e2a4a]');
+          navbar?.removeAttribute('style');
         }
-      });
+      };
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
 
-      const btn = document.getElementById('menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('icon-open');
-      const iconClose = document.getElementById('icon-close');
+      // Mobile menu
+      const btn     = document.getElementById('menu-btn');
+      const menu    = document.getElementById('mobile-menu');
+      const iconO   = document.getElementById('icon-open');
+      const iconC   = document.getElementById('icon-close');
       btn?.addEventListener('click', () => {
         menu?.classList.toggle('hidden');
-        iconOpen?.classList.toggle('hidden');
-        iconClose?.classList.toggle('hidden');
+        iconO?.classList.toggle('hidden');
+        iconC?.classList.toggle('hidden');
       });
+      menu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        iconO?.classList.remove('hidden');
+        iconC?.classList.add('hidden');
+      }));
 
-      menu?.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menu.classList.add('hidden');
-          iconOpen?.classList.remove('hidden');
-          iconClose?.classList.add('hidden');
-        });
-      });
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
+      // Scroll animations
+      const obs = new IntersectionObserver(
+        entries => entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('animate-in'); obs.unobserve(e.target); }
+        }),
         { threshold: 0.1 }
       );
-      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
     </script>
   </body>
 </html>
